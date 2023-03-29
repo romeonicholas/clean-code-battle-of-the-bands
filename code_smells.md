@@ -13,3 +13,6 @@
 
 ### Can't be changed without changing tests:
 Most of it. Function names and parameters are already being used by the tests, so trying to clean any of those would cause tests to fail even if the logic stayed the same. The places strings are returned can't be simplified for the same reason.
+
+### Refactoring steps:
+1. Simplifying Conditional Expressions (Consolidate Duplicate Conditional Fragments): vote() used four branches where three would suffice, and the conditions were in a less-than ideal order (unsuccessful returns on the first and last branch, instead of grouped together as guard clauses)

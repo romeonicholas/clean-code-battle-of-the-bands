@@ -35,14 +35,12 @@ class MergeRequest:
         if self._status == "closed":
             return "can't vote on a closed merge request"
 
-        if type == "downvote":
-            self._context["upvotes"].discard(by_user)
-            self._context["downvotes"].add(by_user)
-        elif type == "upvote":
-            self._context["downvotes"].discard(by_user)
-            self._context["upvotes"].add(by_user)
-        else:
+        if type not in ["upvote", "downvote"]:
             return "not correct type"
+
+        self._context["upvotes"].discard(by_user)
+        self._context["downvotes"].discard(by_user)
+        self._context[f'{type}s'].add(by_user)
 
     def close(self):
         if self.status() == "approved":
