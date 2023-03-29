@@ -18,3 +18,5 @@ Most of it. Function names and parameters are already being used by the tests, s
 1. Simplifying Conditional Expressions (Consolidate Duplicate Conditional Fragments): vote() used four branches where three would suffice, and the conditions were in a less-than ideal order (unsuccessful returns on the first and last branch, instead of grouped together as guard clauses)
 
 2. Simplifying Conditional Expressions: status() used nested if/else logic even though it didn't require it, so flattening those if/elses makes it a little clearer
+
+3. Simplifying Conditional Expressions (Consolidate Duplicate Conditional Fragments): close() had two almost identical branches that could be combined into a single guard clause

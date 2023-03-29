@@ -42,14 +42,13 @@ class MergeRequest:
         self._context[f'{type}s'].add(by_user)
 
     def close(self):
-        if self.status() == "approved":
-            self._status = "closed"
-            return "Merge request has been approved and closed"
-        elif self.status() == "rejected":
-            self._status = "closed"
-            return "Merge request has been rejected and closed"
-        else:
+        if self.status() not in ["approved", "rejected"]:
             return "Cannot close merge request until it has been approved or rejected"
+
+        previous_status = self.status()
+        self._status = "closed"
+
+        return f"Merge request has been {previous_status} and closed"
 
     def getvotes(self):
         upvotes = len(self._context["upvotes"])
