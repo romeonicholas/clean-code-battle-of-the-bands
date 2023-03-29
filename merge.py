@@ -21,15 +21,14 @@ class MergeRequest:
     def status(self):
         if self._status == "closed":
             return self._status
-        else:
-            if self._context["downvotes"]:
-                return "rejected"
-            else:
-                if len(self._context["upvotes"]) >= 2:
-                    return "approved"
-                else:
-                    return "pending"
-        return None
+
+        if self._context["downvotes"]:
+            return "rejected"
+
+        if len(self._context["upvotes"]) >= 2:
+            return "approved"
+
+        return "pending"
 
     def vote(self, by_user, type):
         if self._status == "closed":
