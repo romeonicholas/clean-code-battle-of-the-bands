@@ -53,11 +53,11 @@ class MergeRequest:
     def getvotes(self):
         upvotes = len(self._context["upvotes"])
         downvotes = len(self._context["downvotes"])
+
         if upvotes == 0 and downvotes == 0:
             return "No votes yet"
-        elif upvotes == 0:
-            return f"{downvotes} downvotes"
-        elif downvotes == 0:
-            return f"{upvotes} upvotes"
-        else:
-            return f"{upvotes} upvotes, {downvotes} downvotes"
+
+        if upvotes == 0 or downvotes == 0:
+            return f"{upvotes} upvotes" if upvotes > downvotes else f"{downvotes} downvotes"
+
+        return f"{upvotes} upvotes, {downvotes} downvotes"

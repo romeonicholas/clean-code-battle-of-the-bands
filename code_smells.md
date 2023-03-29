@@ -20,3 +20,5 @@ Most of it. Function names and parameters are already being used by the tests, s
 2. Simplifying Conditional Expressions: status() used nested if/else logic even though it didn't require it, so flattening those if/elses makes it a little clearer
 
 3. Simplifying Conditional Expressions (Consolidate Duplicate Conditional Fragments): close() had two almost identical branches that could be combined into a single guard clause
+
+4. Simplifying Conditional Expressions (Consolidate Duplicate Conditional Fragments): getvotes() was probably fine but I think it's easier to read as three branches (and, or, both) since the logic for returning only upvotes or downvotes is very simple
